@@ -1,0 +1,447 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <meta charset="UTF-8">
+  <!-- import CSS -->
+  <link rel="stylesheet" href="./libs/index.css">
+  <style>
+    body {
+      padding: 20px;
+    }
+
+    .el-input {
+      width: 120px;
+    }
+
+    .unit span {
+      display: inline-block;
+      padding: 10px 52px;
+    }
+
+    #result {
+      padding: 10px;
+      border: 1px dotted #ddd;
+    }
+
+    .m-l-30 {
+      margin-left: 30px;
+    }
+  </style>
+</head>
+
+<body>
+  <div id="app">
+    <div class="unit">
+      <span>千</span>
+      <span>百</span>
+      <span>十</span>
+      <span>个</span>
+    </div>
+    <div>
+      <el-input v-model="qian" placeholder="千"></el-input>
+      <el-input v-model="bai" placeholder="百"></el-input>
+      <el-input v-model="shi" placeholder="十"></el-input>
+      <el-input v-model="ge" placeholder="个"></el-input>
+      <el-button @click="generate" type="success">生成</button>
+        <!-- <el-button @click="resetForm" type="primary">重置</button> -->
+    </div>
+
+    <hr>
+    <div>
+
+      <el-form :model="excludeForm" ref="excludeForm" :rules="excludeFormRules" inline>
+        排除
+        <el-form-item prop="shuangchong">
+          <el-checkbox @change="exclude" size="mini" v-model="excludeForm.shuangchong" label="双重" border class="m-l-30">
+          </el-checkbox>
+        </el-form-item>
+        <!-- <el-form-item prop="shuangshuangchong">
+          <el-checkbox @change="exclude" size="mini" v-model="excludeForm.shuangshuangchong" label="双双重" border>
+          </el-checkbox>
+        </el-form-item> -->
+        <el-form-item prop="sanchong">
+          <el-checkbox @change="exclude" size="mini" v-model="excludeForm.sanchong" label="三重" border></el-checkbox>
+        </el-form-item>
+        <el-form-item prop="sichong">
+          <el-checkbox @change="exclude" size="mini" v-model="excludeForm.sichong" label="四重" border></el-checkbox>
+        </el-form-item>
+        <el-form-item prop="liangxiongdi">
+          <el-checkbox @change="exclude" size="mini" v-model="excludeForm.liangxiongdi" label="两兄弟" border>
+          </el-checkbox>
+        </el-form-item>
+        <el-form-item prop="liangxiongdi2">
+          <el-checkbox @change="exclude" size="mini" v-model="excludeForm.liangxiongdi2" label="反两兄弟" border>
+          </el-checkbox>
+        </el-form-item>
+        <el-form-item prop="sanxiongdi">
+          <el-checkbox @change="exclude" size="mini" v-model="excludeForm.sanxiongdi" label="三兄弟" border></el-checkbox>
+        </el-form-item>
+        <el-form-item prop="sanxiongdi2">
+          <el-checkbox @change="exclude" size="mini" v-model="excludeForm.sanxiongdi2" label="反三兄弟" border>
+          </el-checkbox>
+        </el-form-item>
+        <el-form-item prop="sixiongdi">
+          <el-checkbox @change="exclude" size="mini" v-model="excludeForm.sixiongdi" label="四兄弟" border></el-checkbox>
+        </el-form-item>
+        <el-form-item prop="sixiongdi2">
+          <el-checkbox @change="exclude" size="mini" v-model="excludeForm.sixiongdi2" label="反四兄弟" border></el-checkbox>
+        </el-form-item>
+        <hr>
+        除（单)
+        <el-form-item prop="chudanqian" class="m-l-30">
+          <el-checkbox @change="exclude" size="mini" v-model="excludeForm.chudanqian" label="千" border></el-checkbox>
+        </el-form-item>
+        <el-form-item prop="chudanbai">
+          <el-checkbox @change="exclude" size="mini" v-model="excludeForm.chudanbai" label="百" border></el-checkbox>
+        </el-form-item>
+        <el-form-item prop="chudanshi">
+          <el-checkbox @change="exclude" size="mini" v-model="excludeForm.chudanshi" label="十" border></el-checkbox>
+        </el-form-item>
+        <el-form-item prop="chudange">
+          <el-checkbox @change="exclude" size="mini" v-model="excludeForm.chudange" label="个" border></el-checkbox>
+        </el-form-item>
+        <hr>
+        除（双)
+        <el-form-item prop="chushuangqian" class="m-l-30">
+          <el-checkbox @change="exclude" size="mini" v-model="excludeForm.chushuangqian" label="千" border></el-checkbox>
+        </el-form-item>
+        <el-form-item prop="chushuangbai">
+          <el-checkbox @change="exclude" size="mini" v-model="excludeForm.chushuangbai" label="百" border></el-checkbox>
+        </el-form-item>
+        <el-form-item prop="chushuangshi">
+          <el-checkbox @change="exclude" size="mini" v-model="excludeForm.chushuangshi" label="十" border></el-checkbox>
+        </el-form-item>
+        <el-form-item prop="chushuangge">
+          <el-checkbox @change="exclude" size="mini" v-model="excludeForm.chushuangge" label="个" border></el-checkbox>
+        </el-form-item>
+        <hr>
+        除（同时上奖）
+        <el-form-item prop="tongshishangjiang1qian">
+          <el-input @change="exclude" size="mini" v-model="excludeForm.tongshishangjiang1qian" placeholder="千" />
+        </el-form-item>
+        <el-form-item prop="tongshishangjiang1bai">
+          <el-input @change="exclude" size="mini" v-model="excludeForm.tongshishangjiang1bai" placeholder="百" />
+        </el-form-item>
+        <el-form-item prop="tongshishangjiang1shi">
+          <el-input @change="exclude" size="mini" v-model="excludeForm.tongshishangjiang1shi" placeholder="十" />
+        </el-form-item>
+        <el-form-item prop="tongshishangjiang1ge">
+          <el-input @change="exclude" size="mini" v-model="excludeForm.tongshishangjiang1ge" placeholder="个" />
+        </el-form-item>
+      </el-form>
+    </div>
+
+    <hr>
+    <div style="word-wrap: break-word">
+      个数:<span id="num">{{ result.length }}</span>
+      <br>
+      结果:
+      <br>
+      <div id="result">{{result.join(',')}}</div>
+      <br>
+    </div>
+  </div>
+</body>
+<script src="./libs/vue.js"></script>
+<script src="./libs/index.js"></script>
+<script src="./libs/lodash.min.js"></script>
+<script>
+
+  new Vue({
+    el: '#app',
+    data: function () {
+      return {
+        num: 0,
+        result: [],
+        originResult: [],
+        qian: '12',
+        bai: '12',
+        shi: '12',
+        ge: '12',
+        excludeForm: {
+          shuangchong: false,
+          shuangshuangchong: false,
+          sanchong: false,
+          sichong: false,
+          liangxiongdi: false,
+          liangxiongdi2: false,
+          sanxiongdi: false,
+          sanxiongdi2: false,
+          sixiongdi: false,
+          sixiongdi2: false,
+          chudanqian: false,
+          chudanbai: false,
+          chudanshi: false,
+          chudange: false,
+          chushuangqian: false,
+          chushuangbai: false,
+          chushuangshi: false,
+          chushuangge: false,
+          tongshishangjiang1qian: '',
+          tongshishangjiang1bai: '',
+          tongshishangjiang1shi: '',
+          tongshishangjiang1ge: '',
+        },
+        excludeFormRules: {
+          shuangchong: [],
+          shuangshuangchong: [],
+          sanchong: [],
+          sichong: [],
+          liangxiongdi: [],
+          liangxiongdi2: [],
+          sanxiongdi: [],
+          sanxiongdi2: [],
+          sixiongdi: [],
+          sixiongdi2: [],
+        }
+      }
+    },
+    methods: {
+      exclude() {
+        let arr = this.originResult
+        if (!arr || !arr.length) {
+          this.$message.error('请先生成数字后再筛选!')
+          return
+        }
+        // 排除双重
+        if (this.excludeForm.shuangchong) {
+          arr = arr.filter((item) => {
+            let nums = item.split('')
+            return nums[0] !== nums[1] && nums[1] !== nums[2] && nums[2] !== nums[3]
+          })
+        }
+        //排除双双重
+        if (this.excludeForm.shuangshuangchong) {
+          arr = arr.filter((item) => {
+            return !_.includes(item, '0011')
+              && !_.includes(item, '0101')
+              && !_.includes(item, '0110')
+              && !_.includes(item, '1212')
+              && !_.includes(item, '1221')
+              && !_.includes(item, '2233')
+              && !_.includes(item, '2323')
+              && !_.includes(item, '2332')
+              && !_.includes(item, '3344')
+              && !_.includes(item, '3443')
+              && !_.includes(item, '3434')
+              && !_.includes(item, '4455')
+              && !_.includes(item, '4545')
+              && !_.includes(item, '4554')
+              && !_.includes(item, '5566')
+              && !_.includes(item, '5665')
+              && !_.includes(item, '5656')
+              && !_.includes(item, '6677')
+              && !_.includes(item, '6776')
+              && !_.includes(item, '6767')
+              && !_.includes(item, '7788')
+              && !_.includes(item, '7887')
+              && !_.includes(item, '7878')
+              && !_.includes(item, '8899')
+              && !_.includes(item, '8998')
+              && !_.includes(item, '8989')
+
+
+          })
+        }
+        //排除三重
+        if (this.excludeForm.sanchong) {
+          arr = arr.filter((item) => {
+            let nums = _.groupBy(item)
+            let flag = true
+            Object.keys(nums).forEach(i => {
+              if (nums[i].length === 3) {
+                flag = false
+              }
+            })
+            return flag
+          })
+        }
+        // 排除四重
+        if (this.excludeForm.sichong) {
+          arr = arr.filter((item) => {
+            let nums = _.groupBy(item)
+            let flag = true
+            Object.keys(nums).forEach(i => {
+              if (nums[i].length === 4) {
+                flag = false
+              }
+            })
+            return flag
+          })
+        }
+        // 排除正两兄弟
+        if (this.excludeForm.liangxiongdi) {
+          arr = arr.filter((item) => {
+            return !_.includes(item, '01')
+              && !_.includes(item, '12')
+              && !_.includes(item, '23')
+              && !_.includes(item, '34')
+              && !_.includes(item, '45')
+              && !_.includes(item, '56')
+              && !_.includes(item, '67')
+              && !_.includes(item, '78')
+              && !_.includes(item, '89')
+          })
+        }
+        // 排除反两兄弟
+        if (this.excludeForm.liangxiongdi2) {
+          arr = arr.filter((item) => {
+            return !_.includes(item, '10')
+              && !_.includes(item, '21')
+              && !_.includes(item, '32')
+              && !_.includes(item, '43')
+              && !_.includes(item, '54')
+              && !_.includes(item, '65')
+              && !_.includes(item, '76')
+              && !_.includes(item, '87')
+              && !_.includes(item, '98')
+          })
+        }
+        // 排除正三兄弟
+        if (this.excludeForm.sanxiongdi) {
+          arr = arr.filter((item) => {
+            return !_.includes(item, '012')
+              && !_.includes(item, '123')
+              && !_.includes(item, '234')
+              && !_.includes(item, '345')
+              && !_.includes(item, '456')
+              && !_.includes(item, '567')
+              && !_.includes(item, '678')
+              && !_.includes(item, '789')
+          })
+        }
+        // 排除反三兄弟
+        if (this.excludeForm.sanxiongdi2) {
+          arr = arr.filter((item) => {
+            return !_.includes(item, '987')
+              && !_.includes(item, '876')
+              && !_.includes(item, '654')
+              && !_.includes(item, '543')
+              && !_.includes(item, '432')
+              && !_.includes(item, '321')
+              && !_.includes(item, '210')
+          })
+        }
+        // 排除正四兄弟
+        if (this.excludeForm.sixiongdi) {
+          arr = arr.filter((item) => {
+            return !_.includes(item, '0123')
+              && !_.includes(item, '1234')
+              && !_.includes(item, '2345')
+              && !_.includes(item, '3456')
+              && !_.includes(item, '4567')
+              && !_.includes(item, '5678')
+              && !_.includes(item, '6789')
+          })
+        }
+        // 排除反四兄弟
+        if (this.excludeForm.sixiongdi2) {
+          arr = arr.filter((item) => {
+            return !_.includes(item, '3210')
+              && !_.includes(item, '4321')
+              && !_.includes(item, '5432')
+              && !_.includes(item, '6543')
+              && !_.includes(item, '7654')
+              && !_.includes(item, '8765')
+              && !_.includes(item, '9876')
+          })
+        }
+        // 除单千
+        if (this.excludeForm.chudanqian) {
+          arr = arr.filter((item) => {
+            return !(item.split('')[0] % 2)
+          })
+        }
+        // 除单百
+        if (this.excludeForm.chudanbai) {
+          arr = arr.filter((item) => {
+            return !(item.split('')[1] % 2)
+          })
+        }
+        // 除单十
+        if (this.excludeForm.chudanshi) {
+          arr = arr.filter((item) => {
+            return !(item.split('')[2] % 2)
+          })
+        }
+        // 除单个
+        if (this.excludeForm.chudange) {
+          arr = arr.filter((item) => {
+            return !(item.split('')[3] % 2)
+          })
+        }
+        // 除双千
+        if (this.excludeForm.chushuangqian) {
+          arr = arr.filter((item) => {
+            return !!(item.split('')[0] % 2)
+          })
+        }
+        // 除双百
+        if (this.excludeForm.chushuangbai) {
+          arr = arr.filter((item) => {
+            return !!(item.split('')[1] % 2)
+          })
+        }
+        // 除双十
+        if (this.excludeForm.chushuangshi) {
+          arr = arr.filter((item) => {
+            return !!(item.split('')[2] % 2)
+          })
+        }
+        // 除双个
+        if (this.excludeForm.chushuangge) {
+          arr = arr.filter((item) => {
+            return !!(item.split('')[3] % 2)
+          })
+        }
+        // 除同时上奖1 千
+        if (this.excludeForm.tongshishangjiang1qian) {
+          arr = arr.filter((item) => {
+            return item.split('')[0] !== this.excludeForm.tongshishangjiang1qian
+          })
+        }
+        // 除同时上奖1 百
+        if (this.excludeForm.tongshishangjiang1bai) {
+          debugger
+          arr = arr.filter((item) => {
+            return item.split('')[1] !== this.excludeForm.tongshishangjiang1bai
+          })
+        }
+        // 除同时上奖1 十
+        if (this.excludeForm.tongshishangjiang1shi) {
+          arr = arr.filter((item) => {
+            return item.split('')[2] !== this.excludeForm.tongshishangjiang1shi
+          })
+        }
+        // 除同时上奖1 个
+        if (this.excludeForm.tongshishangjiang1ge) {
+          arr = arr.filter((item) => {
+            return item.split('')[3] !== this.excludeForm.tongshishangjiang1ge
+          })
+        }
+        this.result = arr
+      },
+      resetForm() {
+        this.$refs['excludeForm'].resetFields();
+      },
+      generate() {
+        this.$refs['excludeForm'].resetFields();
+        var qianArr = this.qian.split('')
+        var baiArr = this.bai.split('')
+        var shiArr = this.shi.split('')
+        var geArr = this.ge.split('')
+        var result = [];
+        for (var i = 0; i < 999999; i++) {
+          result.push(`${qianArr[Math.floor(Math.random() * (qianArr.length))]}${baiArr[Math.floor(Math.random() * (baiArr.length))]}${shiArr[Math.floor(Math.random() * (shiArr.length))]}${geArr[Math.floor(Math.random() * (geArr.length))]}`)
+        }
+        result = new Set(result)
+        this.result = ([...result]).sort((a, b) => a - b)
+        this.originResult = ([...result]).sort((a, b) => a - b)
+        this.num = ([...result]).sort((a, b) => a - b).length
+      }
+    }
+  })
+</script>
+
+</html>

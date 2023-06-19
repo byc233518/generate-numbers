@@ -177,7 +177,7 @@
                 style="width: 100%;"
                 :autosize="{ minRows: 4, maxRows: 6}"
                 v-model="excludeForm.chuzuhe" 
-                placeholder="多个使用 一个空格 隔开,例如: 1234 5678 9012"
+                placeholder="多个使用 两个空格 隔开,例如: 1234  5678  9012"
               />
             </el-form-item>
           </div>
@@ -200,7 +200,7 @@
                 style="width: 100%;"
                 :autosize="{ minRows: 4, maxRows: 6}"
                 v-model="excludeForm.chutongshi" 
-                placeholder="多个使用 一个空格 隔开,例如: 1234 5678 9012"
+                placeholder="多个使用 两个空格 隔开,例如: 1234  5678  9012"
               />
             </el-form-item>
           </div>
@@ -217,7 +217,7 @@
       结果: <el-button @click="handleCopy">复制</el-button>
       <br>
 
-      <el-input id="result" ref="result" type="textarea" :value="result.join(' ')" :rows="10" />
+      <el-input id="result" ref="result" type="textarea" :value="result.join('  ')" :rows="10" />
       <!-- <div >{{result.join(' &nbsp;&nbsp;&nbsp;&nbsp; ')}}</div> -->
       <br>
     </div>
@@ -677,7 +677,7 @@
 
         // 除组合
         if(this.excludeForm.chuzuhe) {
-          let chuzuheFormArr =  this.excludeForm.chuzuhe.split(' ')
+          let chuzuheFormArr =  this.excludeForm.chuzuhe.split('  ')
           for(let i = 0; i< chuzuheFormArr.length; i++) {
             arr = arr.filter((item) => {
               return !(((_.sortBy(item.split(''), item => item)).join('')) === ((_.sortBy(chuzuheFormArr[i], item => item)).join('')))
@@ -687,7 +687,7 @@
 
         // 除同时
         if(this.excludeForm.chutongshi) {
-          let chutongshiFormArr =  this.excludeForm.chutongshi.split(' ')
+          let chutongshiFormArr =  this.excludeForm.chutongshi.split('  ')
           for(let i = 0; i< chutongshiFormArr.length; i++) {
             arr = arr.filter((item) => {
               return item !== chutongshiFormArr[i]

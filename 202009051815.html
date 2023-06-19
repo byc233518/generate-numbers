@@ -66,10 +66,6 @@
       margin-bottom: 3px;
 
     }
-
-    .chuzuhe-item-wrap .el-form-item__content {
-      width: 100%;
-    }
   </style>
 </head>
 
@@ -160,53 +156,790 @@
         <el-form-item prop="chushuangge">
           <el-checkbox @change="exclude" size="mini" v-model="excludeForm.chushuangge" label="个" border></el-checkbox>
         </el-form-item>
-        
-        <hr/>
-        除 (组合)
-        <div class="chuzuhe-wrap">
-          <!-- 除
+        <hr>
+        除（同时）
+        <div class="chutongshi-wrap">
+          <!-- 除同时
             就是输入4个数字，比如1234.它会生成24组1234.1243.1324.1342.1423.1432.2134.2143.2314.2341.2413.2431.3124.3142.3241.3214.3412.3421.4123.4132.4213.4231.4321.4312 
             要是输入1233.它生成8组1233.1323.1332.2331.2313.3132.3312.3231
             要是输入1222.生成1222.2122.2212.2221.只有4组
           -->
-          <div class="chuzuhe-item-wrap">
-            <el-form-item prop="chuzuhe" style="width: 100%;" >
-              <el-input 
-                @change="exclude"
-                type="textarea" 
-                style="width: 100%;"
-                :autosize="{ minRows: 4, maxRows: 6}"
-                v-model="excludeForm.chuzuhe" 
-                placeholder="多个使用 一个空格 隔开,例如: 1234 5678 9012"
-              />
+          <div class="chutongshi-item-wrap">
+            <el-form-item prop="tongshi0qian">
+              <el-input style="width: 30px;" maxlength="1" @change="exclude" size="mini"
+                v-model="excludeForm.tongshi0qian" placeholder="千" />
+            </el-form-item>
+            <el-form-item prop="tongshi0bai">
+              <el-input style="width: 30px;" maxlength="1" @change="exclude" size="mini"
+                v-model="excludeForm.tongshi0bai" placeholder="百" />
+            </el-form-item>
+            <el-form-item prop="tongshi0shi">
+              <el-input style="width: 30px;" maxlength="1" @change="exclude" size="mini"
+                v-model="excludeForm.tongshi0shi" placeholder="十" />
+            </el-form-item>
+            <el-form-item prop="tongshi0ge">
+              <el-input style="width: 30px;" maxlength="1" @change="exclude" size="mini"
+                v-model="excludeForm.tongshi0ge" placeholder="个" />
             </el-form-item>
           </div>
-          <el-button type="primary" size="mini">排除</el-button>
-        </div>
+          <!--  -->
+          <div class="chutongshi-item-wrap">
+            <el-form-item prop="tongshi1qian">
+              <el-input style="width: 30px;" maxlength="1" @change="exclude" size="mini"
+                v-model="excludeForm.tongshi1qian" placeholder="千" />
+            </el-form-item>
+            <el-form-item prop="tongshi1bai">
+              <el-input style="width: 30px;" maxlength="1" @change="exclude" size="mini"
+                v-model="excludeForm.tongshi1bai" placeholder="百" />
+            </el-form-item>
+            <el-form-item prop="tongshi1shi">
+              <el-input style="width: 30px;" maxlength="1" @change="exclude" size="mini"
+                v-model="excludeForm.tongshi1shi" placeholder="十" />
+            </el-form-item>
+            <el-form-item prop="tongshi1ge">
+              <el-input style="width: 30px;" maxlength="1" @change="exclude" size="mini"
+                v-model="excludeForm.tongshi1ge" placeholder="个" />
+            </el-form-item>
+          </div>
+          <div class="chutongshi-item-wrap">
+            <el-form-item prop="tongshi2qian">
+              <el-input style="width: 30px;" maxlength="1" @change="exclude" size="mini"
+                v-model="excludeForm.tongshi2qian" placeholder="千" />
+            </el-form-item>
+            <el-form-item prop="tongshi2bai">
+              <el-input style="width: 30px;" maxlength="1" @change="exclude" size="mini"
+                v-model="excludeForm.tongshi2bai" placeholder="百" />
+            </el-form-item>
+            <el-form-item prop="tongshi2shi">
+              <el-input style="width: 30px;" maxlength="1" @change="exclude" size="mini"
+                v-model="excludeForm.tongshi2shi" placeholder="十" />
+            </el-form-item>
+            <el-form-item prop="tongshi2ge">
+              <el-input style="width: 30px;" maxlength="1" @change="exclude" size="mini"
+                v-model="excludeForm.tongshi2ge" placeholder="个" />
+            </el-form-item>
+          </div>
+          <div class="chutongshi-item-wrap">
+            <el-form-item prop="tongshi3qian">
+              <el-input style="width: 30px;" maxlength="1" @change="exclude" size="mini"
+                v-model="excludeForm.tongshi3qian" placeholder="千" />
+            </el-form-item>
+            <el-form-item prop="tongshi3bai">
+              <el-input style="width: 30px;" maxlength="1" @change="exclude" size="mini"
+                v-model="excludeForm.tongshi3bai" placeholder="百" />
+            </el-form-item>
+            <el-form-item prop="tongshi3shi">
+              <el-input style="width: 30px;" maxlength="1" @change="exclude" size="mini"
+                v-model="excludeForm.tongshi3shi" placeholder="十" />
+            </el-form-item>
+            <el-form-item prop="tongshi3ge">
+              <el-input style="width: 30px;" maxlength="1" @change="exclude" size="mini"
+                v-model="excludeForm.tongshi3ge" placeholder="个" />
+            </el-form-item>
+          </div>
+          <div class="chutongshi-item-wrap">
+            <el-form-item prop="tongshi4qian">
+              <el-input style="width: 30px;" maxlength="1" @change="exclude" size="mini"
+                v-model="excludeForm.tongshi4qian" placeholder="千" />
+            </el-form-item>
+            <el-form-item prop="tongshi4bai">
+              <el-input style="width: 30px;" maxlength="1" @change="exclude" size="mini"
+                v-model="excludeForm.tongshi4bai" placeholder="百" />
+            </el-form-item>
+            <el-form-item prop="tongshi4shi">
+              <el-input style="width: 30px;" maxlength="1" @change="exclude" size="mini"
+                v-model="excludeForm.tongshi4shi" placeholder="十" />
+            </el-form-item>
+            <el-form-item prop="tongshi4ge">
+              <el-input style="width: 30px;" maxlength="1" @change="exclude" size="mini"
+                v-model="excludeForm.tongshi4ge" placeholder="个" />
+            </el-form-item>
+          </div>
+          <div class="chutongshi-item-wrap">
+            <el-form-item prop="tongshi5qian">
+              <el-input style="width: 30px;" maxlength="1" @change="exclude" size="mini"
+                v-model="excludeForm.tongshi5qian" placeholder="千" />
+            </el-form-item>
+            <el-form-item prop="tongshi5bai">
+              <el-input style="width: 30px;" maxlength="1" @change="exclude" size="mini"
+                v-model="excludeForm.tongshi5bai" placeholder="百" />
+            </el-form-item>
+            <el-form-item prop="tongshi5shi">
+              <el-input style="width: 30px;" maxlength="1" @change="exclude" size="mini"
+                v-model="excludeForm.tongshi5shi" placeholder="十" />
+            </el-form-item>
+            <el-form-item prop="tongshi5ge">
+              <el-input style="width: 30px;" maxlength="1" @change="exclude" size="mini"
+                v-model="excludeForm.tongshi5ge" placeholder="个" />
+            </el-form-item>
+          </div>
+          <div class="chutongshi-item-wrap">
+            <el-form-item prop="tongshi6qian">
+              <el-input style="width: 30px;" maxlength="1" @change="exclude" size="mini"
+                v-model="excludeForm.tongshi6qian" placeholder="千" />
+            </el-form-item>
+            <el-form-item prop="tongshi6bai">
+              <el-input style="width: 30px;" maxlength="1" @change="exclude" size="mini"
+                v-model="excludeForm.tongshi6bai" placeholder="百" />
+            </el-form-item>
+            <el-form-item prop="tongshi6shi">
+              <el-input style="width: 30px;" maxlength="1" @change="exclude" size="mini"
+                v-model="excludeForm.tongshi6shi" placeholder="十" />
+            </el-form-item>
+            <el-form-item prop="tongshi6ge">
+              <el-input style="width: 30px;" maxlength="1" @change="exclude" size="mini"
+                v-model="excludeForm.tongshi6ge" placeholder="个" />
+            </el-form-item>
+          </div>
+          <div class="chutongshi-item-wrap">
+            <el-form-item prop="tongshi7qian">
+              <el-input style="width: 30px;" maxlength="1" @change="exclude" size="mini"
+                v-model="excludeForm.tongshi7qian" placeholder="千" />
+            </el-form-item>
+            <el-form-item prop="tongshi7bai">
+              <el-input style="width: 30px;" maxlength="1" @change="exclude" size="mini"
+                v-model="excludeForm.tongshi7bai" placeholder="百" />
+            </el-form-item>
+            <el-form-item prop="tongshi7shi">
+              <el-input style="width: 30px;" maxlength="1" @change="exclude" size="mini"
+                v-model="excludeForm.tongshi7shi" placeholder="十" />
+            </el-form-item>
+            <el-form-item prop="tongshi7ge">
+              <el-input style="width: 30px;" maxlength="1" @change="exclude" size="mini"
+                v-model="excludeForm.tongshi7ge" placeholder="个" />
+            </el-form-item>
+          </div>
+          <div class="chutongshi-item-wrap">
+            <el-form-item prop="tongshi8qian">
+              <el-input style="width: 30px;" maxlength="1" @change="exclude" size="mini"
+                v-model="excludeForm.tongshi8qian" placeholder="千" />
+            </el-form-item>
+            <el-form-item prop="tongshi8bai">
+              <el-input style="width: 30px;" maxlength="1" @change="exclude" size="mini"
+                v-model="excludeForm.tongshi8bai" placeholder="百" />
+            </el-form-item>
+            <el-form-item prop="tongshi8shi">
+              <el-input style="width: 30px;" maxlength="1" @change="exclude" size="mini"
+                v-model="excludeForm.tongshi8shi" placeholder="十" />
+            </el-form-item>
+            <el-form-item prop="tongshi8ge">
+              <el-input style="width: 30px;" maxlength="1" @change="exclude" size="mini"
+                v-model="excludeForm.tongshi8ge" placeholder="个" />
+            </el-form-item>
+          </div>
+          <div class="chutongshi-item-wrap">
+            <el-form-item prop="tongshi9qian">
+              <el-input style="width: 30px;" maxlength="1" @change="exclude" size="mini"
+                v-model="excludeForm.tongshi9qian" placeholder="千" />
+            </el-form-item>
+            <el-form-item prop="tongshi9bai">
+              <el-input style="width: 30px;" maxlength="1" @change="exclude" size="mini"
+                v-model="excludeForm.tongshi9bai" placeholder="百" />
+            </el-form-item>
+            <el-form-item prop="tongshi9shi">
+              <el-input style="width: 30px;" maxlength="1" @change="exclude" size="mini"
+                v-model="excludeForm.tongshi9shi" placeholder="十" />
+            </el-form-item>
+            <el-form-item prop="tongshi9ge">
+              <el-input style="width: 30px;" maxlength="1" @change="exclude" size="mini"
+                v-model="excludeForm.tongshi9ge" placeholder="个" />
+            </el-form-item>
+          </div>
 
-        <hr/>
-        除 (同时)
-        <div class="chuzuhe-wrap">
-          <!-- 除
-            就是输入4个数字，比如1234.它会生成24组1234.1243.1324.1342.1423.1432.2134.2143.2314.2341.2413.2431.3124.3142.3241.3214.3412.3421.4123.4132.4213.4231.4321.4312 
-            要是输入1233.它生成8组1233.1323.1332.2331.2313.3132.3312.3231
-            要是输入1222.生成1222.2122.2212.2221.只有4组
-          -->
-          <div class="chuzuhe-item-wrap">
-            <el-form-item prop="chutongshi" style="width: 100%;" >
-              <el-input 
-                @change="exclude"
-                type="textarea" 
-                style="width: 100%;"
-                :autosize="{ minRows: 4, maxRows: 6}"
-                v-model="excludeForm.chutongshi" 
-                placeholder="多个使用 一个空格 隔开,例如: 1234 5678 9012"
-              />
+          <div class="chutongshi-item-wrap">
+            <el-form-item prop="tongshi10qian">
+              <el-input style="width: 30px;" maxlength="1" @change="exclude" size="mini"
+                v-model="excludeForm.tongshi10qian" placeholder="千" />
+            </el-form-item>
+            <el-form-item prop="tongshi10bai">
+              <el-input style="width: 30px;" maxlength="1" @change="exclude" size="mini"
+                v-model="excludeForm.tongshi10bai" placeholder="百" />
+            </el-form-item>
+            <el-form-item prop="tongshi10shi">
+              <el-input style="width: 30px;" maxlength="1" @change="exclude" size="mini"
+                v-model="excludeForm.tongshi10shi" placeholder="十" />
+            </el-form-item>
+            <el-form-item prop="tongshi10ge">
+              <el-input style="width: 30px;" maxlength="1" @change="exclude" size="mini"
+                v-model="excludeForm.tongshi10ge" placeholder="个" />
             </el-form-item>
           </div>
-          <el-button type="primary" size="mini">排除</el-button>
+
+          <!-- 11 -->
+          <div class="chutongshi-item-wrap">
+            <el-form-item prop="tongshi11qian">
+              <el-input style="width: 30px;" maxlength="1" @change="exclude" size="mini"
+                v-model="excludeForm.tongshi11qian" placeholder="千" />
+            </el-form-item>
+            <el-form-item prop="tongshi11bai">
+              <el-input style="width: 30px;" maxlength="1" @change="exclude" size="mini"
+                v-model="excludeForm.tongshi11bai" placeholder="百" />
+            </el-form-item>
+            <el-form-item prop="tongshi11shi">
+              <el-input style="width: 30px;" maxlength="1" @change="exclude" size="mini"
+                v-model="excludeForm.tongshi11shi" placeholder="十" />
+            </el-form-item>
+            <el-form-item prop="tongshi11ge">
+              <el-input style="width: 30px;" maxlength="1" @change="exclude" size="mini"
+                v-model="excludeForm.tongshi11ge" placeholder="个" />
+            </el-form-item>
+          </div>
+          <!-- 12 -->
+          <div class="chutongshi-item-wrap">
+            <el-form-item prop="tongshi12qian">
+              <el-input style="width: 30px;" maxlength="1" @change="exclude" size="mini"
+                v-model="excludeForm.tongshi12qian" placeholder="千" />
+            </el-form-item>
+            <el-form-item prop="tongshi12bai">
+              <el-input style="width: 30px;" maxlength="1" @change="exclude" size="mini"
+                v-model="excludeForm.tongshi12bai" placeholder="百" />
+            </el-form-item>
+            <el-form-item prop="tongshi12shi">
+              <el-input style="width: 30px;" maxlength="1" @change="exclude" size="mini"
+                v-model="excludeForm.tongshi12shi" placeholder="十" />
+            </el-form-item>
+            <el-form-item prop="tongshi12ge">
+              <el-input style="width: 30px;" maxlength="1" @change="exclude" size="mini"
+                v-model="excludeForm.tongshi12ge" placeholder="个" />
+            </el-form-item>
+          </div>
+          <!-- 13 -->
+          <div class="chutongshi-item-wrap">
+            <el-form-item prop="tongshi13qian">
+              <el-input style="width: 30px;" maxlength="1" @change="exclude" size="mini"
+                v-model="excludeForm.tongshi13qian" placeholder="千" />
+            </el-form-item>
+            <el-form-item prop="tongshi13bai">
+              <el-input style="width: 30px;" maxlength="1" @change="exclude" size="mini"
+                v-model="excludeForm.tongshi13bai" placeholder="百" />
+            </el-form-item>
+            <el-form-item prop="tongshi13shi">
+              <el-input style="width: 30px;" maxlength="1" @change="exclude" size="mini"
+                v-model="excludeForm.tongshi13shi" placeholder="十" />
+            </el-form-item>
+            <el-form-item prop="tongshi13ge">
+              <el-input style="width: 30px;" maxlength="1" @change="exclude" size="mini"
+                v-model="excludeForm.tongshi13ge" placeholder="个" />
+            </el-form-item>
+          </div>
+          <!-- 14 -->
+          <div class="chutongshi-item-wrap">
+            <el-form-item prop="tongshi14qian">
+              <el-input style="width: 30px;" maxlength="1" @change="exclude" size="mini"
+                v-model="excludeForm.tongshi14qian" placeholder="千" />
+            </el-form-item>
+            <el-form-item prop="tongshi14bai">
+              <el-input style="width: 30px;" maxlength="1" @change="exclude" size="mini"
+                v-model="excludeForm.tongshi14bai" placeholder="百" />
+            </el-form-item>
+            <el-form-item prop="tongshi14shi">
+              <el-input style="width: 30px;" maxlength="1" @change="exclude" size="mini"
+                v-model="excludeForm.tongshi14shi" placeholder="十" />
+            </el-form-item>
+            <el-form-item prop="tongshi14ge">
+              <el-input style="width: 30px;" maxlength="1" @change="exclude" size="mini"
+                v-model="excludeForm.tongshi14ge" placeholder="个" />
+            </el-form-item>
+          </div>
+          <!-- 15 -->
+          <div class="chutongshi-item-wrap">
+            <el-form-item prop="tongshi15qian">
+              <el-input style="width: 30px;" maxlength="1" @change="exclude" size="mini"
+                v-model="excludeForm.tongshi15qian" placeholder="千" />
+            </el-form-item>
+            <el-form-item prop="tongshi15bai">
+              <el-input style="width: 30px;" maxlength="1" @change="exclude" size="mini"
+                v-model="excludeForm.tongshi15bai" placeholder="百" />
+            </el-form-item>
+            <el-form-item prop="tongshi15shi">
+              <el-input style="width: 30px;" maxlength="1" @change="exclude" size="mini"
+                v-model="excludeForm.tongshi15shi" placeholder="十" />
+            </el-form-item>
+            <el-form-item prop="tongshi15ge">
+              <el-input style="width: 30px;" maxlength="1" @change="exclude" size="mini"
+                v-model="excludeForm.tongshi15ge" placeholder="个" />
+            </el-form-item>
+          </div>
+          <!-- 16 -->
+          <div class="chutongshi-item-wrap">
+            <el-form-item prop="tongshi16qian">
+              <el-input style="width: 30px;" maxlength="1" @change="exclude" size="mini"
+                v-model="excludeForm.tongshi16qian" placeholder="千" />
+            </el-form-item>
+            <el-form-item prop="tongshi16bai">
+              <el-input style="width: 30px;" maxlength="1" @change="exclude" size="mini"
+                v-model="excludeForm.tongshi16bai" placeholder="百" />
+            </el-form-item>
+            <el-form-item prop="tongshi16shi">
+              <el-input style="width: 30px;" maxlength="1" @change="exclude" size="mini"
+                v-model="excludeForm.tongshi16shi" placeholder="十" />
+            </el-form-item>
+            <el-form-item prop="tongshi16ge">
+              <el-input style="width: 30px;" maxlength="1" @change="exclude" size="mini"
+                v-model="excludeForm.tongshi16ge" placeholder="个" />
+            </el-form-item>
+          </div>
+          <!-- 17 -->
+          <div class="chutongshi-item-wrap">
+            <el-form-item prop="tongshi17qian">
+              <el-input style="width: 30px;" maxlength="1" @change="exclude" size="mini"
+                v-model="excludeForm.tongshi17qian" placeholder="千" />
+            </el-form-item>
+            <el-form-item prop="tongshi17bai">
+              <el-input style="width: 30px;" maxlength="1" @change="exclude" size="mini"
+                v-model="excludeForm.tongshi17bai" placeholder="百" />
+            </el-form-item>
+            <el-form-item prop="tongshi17shi">
+              <el-input style="width: 30px;" maxlength="1" @change="exclude" size="mini"
+                v-model="excludeForm.tongshi17shi" placeholder="十" />
+            </el-form-item>
+            <el-form-item prop="tongshi17ge">
+              <el-input style="width: 30px;" maxlength="1" @change="exclude" size="mini"
+                v-model="excludeForm.tongshi17ge" placeholder="个" />
+            </el-form-item>
+          </div>
+          <!-- 18 -->
+          <div class="chutongshi-item-wrap">
+            <el-form-item prop="tongshi18qian">
+              <el-input style="width: 30px;" maxlength="1" @change="exclude" size="mini"
+                v-model="excludeForm.tongshi18qian" placeholder="千" />
+            </el-form-item>
+            <el-form-item prop="tongshi18bai">
+              <el-input style="width: 30px;" maxlength="1" @change="exclude" size="mini"
+                v-model="excludeForm.tongshi18bai" placeholder="百" />
+            </el-form-item>
+            <el-form-item prop="tongshi18shi">
+              <el-input style="width: 30px;" maxlength="1" @change="exclude" size="mini"
+                v-model="excludeForm.tongshi18shi" placeholder="十" />
+            </el-form-item>
+            <el-form-item prop="tongshi18ge">
+              <el-input style="width: 30px;" maxlength="1" @change="exclude" size="mini"
+                v-model="excludeForm.tongshi18ge" placeholder="个" />
+            </el-form-item>
+          </div>
+          <!-- 19 -->
+          <div class="chutongshi-item-wrap">
+            <el-form-item prop="tongshi19qian">
+              <el-input style="width: 30px;" maxlength="1" @change="exclude" size="mini"
+                v-model="excludeForm.tongshi19qian" placeholder="千" />
+            </el-form-item>
+            <el-form-item prop="tongshi19bai">
+              <el-input style="width: 30px;" maxlength="1" @change="exclude" size="mini"
+                v-model="excludeForm.tongshi19bai" placeholder="百" />
+            </el-form-item>
+            <el-form-item prop="tongshi19shi">
+              <el-input style="width: 30px;" maxlength="1" @change="exclude" size="mini"
+                v-model="excludeForm.tongshi19shi" placeholder="十" />
+            </el-form-item>
+            <el-form-item prop="tongshi19ge">
+              <el-input style="width: 30px;" maxlength="1" @change="exclude" size="mini"
+                v-model="excludeForm.tongshi19ge" placeholder="个" />
+            </el-form-item>
+          </div>
+          <!-- 20 -->
+          <div class="chutongshi-item-wrap">
+            <el-form-item prop="tongshi20qian">
+              <el-input style="width: 30px;" maxlength="1" @change="exclude" size="mini"
+                v-model="excludeForm.tongshi20qian" placeholder="千" />
+            </el-form-item>
+            <el-form-item prop="tongshi20bai">
+              <el-input style="width: 30px;" maxlength="1" @change="exclude" size="mini"
+                v-model="excludeForm.tongshi20bai" placeholder="百" />
+            </el-form-item>
+            <el-form-item prop="tongshi20shi">
+              <el-input style="width: 30px;" maxlength="1" @change="exclude" size="mini"
+                v-model="excludeForm.tongshi20shi" placeholder="十" />
+            </el-form-item>
+            <el-form-item prop="tongshi20ge">
+              <el-input style="width: 30px;" maxlength="1" @change="exclude" size="mini"
+                v-model="excludeForm.tongshi20ge" placeholder="个" />
+            </el-form-item>
+          </div>
+          <!-- 21 -->
+          <div class="chutongshi-item-wrap">
+            <el-form-item prop="tongshi21qian">
+              <el-input style="width: 30px;" maxlength="1" @change="exclude" size="mini"
+                v-model="excludeForm.tongshi21qian" placeholder="千" />
+            </el-form-item>
+            <el-form-item prop="tongshi21bai">
+              <el-input style="width: 30px;" maxlength="1" @change="exclude" size="mini"
+                v-model="excludeForm.tongshi21bai" placeholder="百" />
+            </el-form-item>
+            <el-form-item prop="tongshi21shi">
+              <el-input style="width: 30px;" maxlength="1" @change="exclude" size="mini"
+                v-model="excludeForm.tongshi21shi" placeholder="十" />
+            </el-form-item>
+            <el-form-item prop="tongshi21ge">
+              <el-input style="width: 30px;" maxlength="1" @change="exclude" size="mini"
+                v-model="excludeForm.tongshi21ge" placeholder="个" />
+            </el-form-item>
+          </div>
+          <!-- 22 -->
+          <div class="chutongshi-item-wrap">
+            <el-form-item prop="tongshi22qian">
+              <el-input style="width: 30px;" maxlength="1" @change="exclude" size="mini"
+                v-model="excludeForm.tongshi22qian" placeholder="千" />
+            </el-form-item>
+            <el-form-item prop="tongshi22bai">
+              <el-input style="width: 30px;" maxlength="1" @change="exclude" size="mini"
+                v-model="excludeForm.tongshi22bai" placeholder="百" />
+            </el-form-item>
+            <el-form-item prop="tongshi22shi">
+              <el-input style="width: 30px;" maxlength="1" @change="exclude" size="mini"
+                v-model="excludeForm.tongshi22shi" placeholder="十" />
+            </el-form-item>
+            <el-form-item prop="tongshi22ge">
+              <el-input style="width: 30px;" maxlength="1" @change="exclude" size="mini"
+                v-model="excludeForm.tongshi22ge" placeholder="个" />
+            </el-form-item>
+          </div>
+          <!-- 23 -->
+          <div class="chutongshi-item-wrap">
+            <el-form-item prop="tongshi23qian">
+              <el-input style="width: 30px;" maxlength="1" @change="exclude" size="mini"
+                v-model="excludeForm.tongshi23qian" placeholder="千" />
+            </el-form-item>
+            <el-form-item prop="tongshi23bai">
+              <el-input style="width: 30px;" maxlength="1" @change="exclude" size="mini"
+                v-model="excludeForm.tongshi23bai" placeholder="百" />
+            </el-form-item>
+            <el-form-item prop="tongshi23shi">
+              <el-input style="width: 30px;" maxlength="1" @change="exclude" size="mini"
+                v-model="excludeForm.tongshi23shi" placeholder="十" />
+            </el-form-item>
+            <el-form-item prop="tongshi23ge">
+              <el-input style="width: 30px;" maxlength="1" @change="exclude" size="mini"
+                v-model="excludeForm.tongshi23ge" placeholder="个" />
+            </el-form-item>
+          </div>
+          <!-- 24 -->
+          <div class="chutongshi-item-wrap">
+            <el-form-item prop="tongshi24qian">
+              <el-input style="width: 30px;" maxlength="1" @change="exclude" size="mini"
+                v-model="excludeForm.tongshi24qian" placeholder="千" />
+            </el-form-item>
+            <el-form-item prop="tongshi24bai">
+              <el-input style="width: 30px;" maxlength="1" @change="exclude" size="mini"
+                v-model="excludeForm.tongshi24bai" placeholder="百" />
+            </el-form-item>
+            <el-form-item prop="tongshi24shi">
+              <el-input style="width: 30px;" maxlength="1" @change="exclude" size="mini"
+                v-model="excludeForm.tongshi24shi" placeholder="十" />
+            </el-form-item>
+            <el-form-item prop="tongshi24ge">
+              <el-input style="width: 30px;" maxlength="1" @change="exclude" size="mini"
+                v-model="excludeForm.tongshi24ge" placeholder="个" />
+            </el-form-item>
+          </div>
+          <!-- 25 -->
+          <div class="chutongshi-item-wrap">
+            <el-form-item prop="tongshi25qian">
+              <el-input style="width: 30px;" maxlength="1" @change="exclude" size="mini"
+                v-model="excludeForm.tongshi25qian" placeholder="千" />
+            </el-form-item>
+            <el-form-item prop="tongshi25bai">
+              <el-input style="width: 30px;" maxlength="1" @change="exclude" size="mini"
+                v-model="excludeForm.tongshi25bai" placeholder="百" />
+            </el-form-item>
+            <el-form-item prop="tongshi25shi">
+              <el-input style="width: 30px;" maxlength="1" @change="exclude" size="mini"
+                v-model="excludeForm.tongshi25shi" placeholder="十" />
+            </el-form-item>
+            <el-form-item prop="tongshi25ge">
+              <el-input style="width: 30px;" maxlength="1" @change="exclude" size="mini"
+                v-model="excludeForm.tongshi25ge" placeholder="个" />
+            </el-form-item>
+          </div>
+          <!-- 26 -->
+          <div class="chutongshi-item-wrap">
+            <el-form-item prop="tongshi26qian">
+              <el-input style="width: 30px;" maxlength="1" @change="exclude" size="mini"
+                v-model="excludeForm.tongshi26qian" placeholder="千" />
+            </el-form-item>
+            <el-form-item prop="tongshi26bai">
+              <el-input style="width: 30px;" maxlength="1" @change="exclude" size="mini"
+                v-model="excludeForm.tongshi26bai" placeholder="百" />
+            </el-form-item>
+            <el-form-item prop="tongshi26shi">
+              <el-input style="width: 30px;" maxlength="1" @change="exclude" size="mini"
+                v-model="excludeForm.tongshi26shi" placeholder="十" />
+            </el-form-item>
+            <el-form-item prop="tongshi26ge">
+              <el-input style="width: 30px;" maxlength="1" @change="exclude" size="mini"
+                v-model="excludeForm.tongshi26ge" placeholder="个" />
+            </el-form-item>
+          </div>
+          <!-- 27 -->
+          <div class="chutongshi-item-wrap">
+            <el-form-item prop="tongshi27qian">
+              <el-input style="width: 30px;" maxlength="1" @change="exclude" size="mini"
+                v-model="excludeForm.tongshi27qian" placeholder="千" />
+            </el-form-item>
+            <el-form-item prop="tongshi27bai">
+              <el-input style="width: 30px;" maxlength="1" @change="exclude" size="mini"
+                v-model="excludeForm.tongshi27bai" placeholder="百" />
+            </el-form-item>
+            <el-form-item prop="tongshi27shi">
+              <el-input style="width: 30px;" maxlength="1" @change="exclude" size="mini"
+                v-model="excludeForm.tongshi27shi" placeholder="十" />
+            </el-form-item>
+            <el-form-item prop="tongshi27ge">
+              <el-input style="width: 30px;" maxlength="1" @change="exclude" size="mini"
+                v-model="excludeForm.tongshi27ge" placeholder="个" />
+            </el-form-item>
+          </div>
+          <!-- 28 -->
+          <div class="chutongshi-item-wrap">
+            <el-form-item prop="tongshi28qian">
+              <el-input style="width: 30px;" maxlength="1" @change="exclude" size="mini"
+                v-model="excludeForm.tongshi28qian" placeholder="千" />
+            </el-form-item>
+            <el-form-item prop="tongshi28bai">
+              <el-input style="width: 30px;" maxlength="1" @change="exclude" size="mini"
+                v-model="excludeForm.tongshi28bai" placeholder="百" />
+            </el-form-item>
+            <el-form-item prop="tongshi28shi">
+              <el-input style="width: 30px;" maxlength="1" @change="exclude" size="mini"
+                v-model="excludeForm.tongshi28shi" placeholder="十" />
+            </el-form-item>
+            <el-form-item prop="tongshi28ge">
+              <el-input style="width: 30px;" maxlength="1" @change="exclude" size="mini"
+                v-model="excludeForm.tongshi28ge" placeholder="个" />
+            </el-form-item>
+          </div>
+          <!-- 29 -->
+          <div class="chutongshi-item-wrap">
+            <el-form-item prop="tongshi29qian">
+              <el-input style="width: 30px;" maxlength="1" @change="exclude" size="mini"
+                v-model="excludeForm.tongshi29qian" placeholder="千" />
+            </el-form-item>
+            <el-form-item prop="tongshi29bai">
+              <el-input style="width: 30px;" maxlength="1" @change="exclude" size="mini"
+                v-model="excludeForm.tongshi29bai" placeholder="百" />
+            </el-form-item>
+            <el-form-item prop="tongshi29shi">
+              <el-input style="width: 30px;" maxlength="1" @change="exclude" size="mini"
+                v-model="excludeForm.tongshi29shi" placeholder="十" />
+            </el-form-item>
+            <el-form-item prop="tongshi29ge">
+              <el-input style="width: 30px;" maxlength="1" @change="exclude" size="mini"
+                v-model="excludeForm.tongshi29ge" placeholder="个" />
+            </el-form-item>
+          </div>
+          <!-- 30 -->
+          <div class="chutongshi-item-wrap">
+            <el-form-item prop="tongshi30qian">
+              <el-input style="width: 30px;" maxlength="1" @change="exclude" size="mini"
+                v-model="excludeForm.tongshi30qian" placeholder="千" />
+            </el-form-item>
+            <el-form-item prop="tongshi30bai">
+              <el-input style="width: 30px;" maxlength="1" @change="exclude" size="mini"
+                v-model="excludeForm.tongshi30bai" placeholder="百" />
+            </el-form-item>
+            <el-form-item prop="tongshi30shi">
+              <el-input style="width: 30px;" maxlength="1" @change="exclude" size="mini"
+                v-model="excludeForm.tongshi30shi" placeholder="十" />
+            </el-form-item>
+            <el-form-item prop="tongshi30ge">
+              <el-input style="width: 30px;" maxlength="1" @change="exclude" size="mini"
+                v-model="excludeForm.tongshi30ge" placeholder="个" />
+            </el-form-item>
+          </div>
+          <!-- 31 -->
+          <div class="chutongshi-item-wrap">
+            <el-form-item prop="tongshi31qian">
+              <el-input style="width: 30px;" maxlength="1" @change="exclude" size="mini"
+                v-model="excludeForm.tongshi31qian" placeholder="千" />
+            </el-form-item>
+            <el-form-item prop="tongshi31bai">
+              <el-input style="width: 30px;" maxlength="1" @change="exclude" size="mini"
+                v-model="excludeForm.tongshi31bai" placeholder="百" />
+            </el-form-item>
+            <el-form-item prop="tongshi31shi">
+              <el-input style="width: 30px;" maxlength="1" @change="exclude" size="mini"
+                v-model="excludeForm.tongshi31shi" placeholder="十" />
+            </el-form-item>
+            <el-form-item prop="tongshi31ge">
+              <el-input style="width: 30px;" maxlength="1" @change="exclude" size="mini"
+                v-model="excludeForm.tongshi31ge" placeholder="个" />
+            </el-form-item>
+          </div>
+          <!-- 32 -->
+          <div class="chutongshi-item-wrap">
+            <el-form-item prop="tongshi32qian">
+              <el-input style="width: 30px;" maxlength="1" @change="exclude" size="mini"
+                v-model="excludeForm.tongshi32qian" placeholder="千" />
+            </el-form-item>
+            <el-form-item prop="tongshi32bai">
+              <el-input style="width: 30px;" maxlength="1" @change="exclude" size="mini"
+                v-model="excludeForm.tongshi32bai" placeholder="百" />
+            </el-form-item>
+            <el-form-item prop="tongshi32shi">
+              <el-input style="width: 30px;" maxlength="1" @change="exclude" size="mini"
+                v-model="excludeForm.tongshi32shi" placeholder="十" />
+            </el-form-item>
+            <el-form-item prop="tongshi32ge">
+              <el-input style="width: 30px;" maxlength="1" @change="exclude" size="mini"
+                v-model="excludeForm.tongshi32ge" placeholder="个" />
+            </el-form-item>
+          </div>
+          <!-- 33 -->
+          <div class="chutongshi-item-wrap">
+            <el-form-item prop="tongshi33qian">
+              <el-input style="width: 30px;" maxlength="1" @change="exclude" size="mini"
+                v-model="excludeForm.tongshi33qian" placeholder="千" />
+            </el-form-item>
+            <el-form-item prop="tongshi33bai">
+              <el-input style="width: 30px;" maxlength="1" @change="exclude" size="mini"
+                v-model="excludeForm.tongshi33bai" placeholder="百" />
+            </el-form-item>
+            <el-form-item prop="tongshi33shi">
+              <el-input style="width: 30px;" maxlength="1" @change="exclude" size="mini"
+                v-model="excludeForm.tongshi33shi" placeholder="十" />
+            </el-form-item>
+            <el-form-item prop="tongshi33ge">
+              <el-input style="width: 30px;" maxlength="1" @change="exclude" size="mini"
+                v-model="excludeForm.tongshi33ge" placeholder="个" />
+            </el-form-item>
+          </div>
+          <!-- 34 -->
+          <div class="chutongshi-item-wrap">
+            <el-form-item prop="tongshi34qian">
+              <el-input style="width: 30px;" maxlength="1" @change="exclude" size="mini"
+                v-model="excludeForm.tongshi34qian" placeholder="千" />
+            </el-form-item>
+            <el-form-item prop="tongshi34bai">
+              <el-input style="width: 30px;" maxlength="1" @change="exclude" size="mini"
+                v-model="excludeForm.tongshi34bai" placeholder="百" />
+            </el-form-item>
+            <el-form-item prop="tongshi34shi">
+              <el-input style="width: 30px;" maxlength="1" @change="exclude" size="mini"
+                v-model="excludeForm.tongshi34shi" placeholder="十" />
+            </el-form-item>
+            <el-form-item prop="tongshi34ge">
+              <el-input style="width: 30px;" maxlength="1" @change="exclude" size="mini"
+                v-model="excludeForm.tongshi34ge" placeholder="个" />
+            </el-form-item>
+          </div>
+          <!-- 35 -->
+          <div class="chutongshi-item-wrap">
+            <el-form-item prop="tongshi35qian">
+              <el-input style="width: 30px;" maxlength="1" @change="exclude" size="mini"
+                v-model="excludeForm.tongshi35qian" placeholder="千" />
+            </el-form-item>
+            <el-form-item prop="tongshi35bai">
+              <el-input style="width: 30px;" maxlength="1" @change="exclude" size="mini"
+                v-model="excludeForm.tongshi35bai" placeholder="百" />
+            </el-form-item>
+            <el-form-item prop="tongshi35shi">
+              <el-input style="width: 30px;" maxlength="1" @change="exclude" size="mini"
+                v-model="excludeForm.tongshi35shi" placeholder="十" />
+            </el-form-item>
+            <el-form-item prop="tongshi35ge">
+              <el-input style="width: 30px;" maxlength="1" @change="exclude" size="mini"
+                v-model="excludeForm.tongshi35ge" placeholder="个" />
+            </el-form-item>
+          </div>
+
+          <!-- 36 -->
+          <div class="chutongshi-item-wrap">
+            <el-form-item prop="tongshi36qian">
+              <el-input style="width: 30px;" maxlength="1" @change="exclude" size="mini"
+                v-model="excludeForm.tongshi36qian" placeholder="千" />
+            </el-form-item>
+            <el-form-item prop="tongshi36bai">
+              <el-input style="width: 30px;" maxlength="1" @change="exclude" size="mini"
+                v-model="excludeForm.tongshi36bai" placeholder="百" />
+            </el-form-item>
+            <el-form-item prop="tongshi36shi">
+              <el-input style="width: 30px;" maxlength="1" @change="exclude" size="mini"
+                v-model="excludeForm.tongshi36shi" placeholder="十" />
+            </el-form-item>
+            <el-form-item prop="tongshi36ge">
+              <el-input style="width: 30px;" maxlength="1" @change="exclude" size="mini"
+                v-model="excludeForm.tongshi36ge" placeholder="个" />
+            </el-form-item>
+          </div>
+          <!-- 37 -->
+          <div class="chutongshi-item-wrap">
+            <el-form-item prop="tongshi37qian">
+              <el-input style="width: 30px;" maxlength="1" @change="exclude" size="mini"
+                v-model="excludeForm.tongshi37qian" placeholder="千" />
+            </el-form-item>
+            <el-form-item prop="tongshi37bai">
+              <el-input style="width: 30px;" maxlength="1" @change="exclude" size="mini"
+                v-model="excludeForm.tongshi37bai" placeholder="百" />
+            </el-form-item>
+            <el-form-item prop="tongshi37shi">
+              <el-input style="width: 30px;" maxlength="1" @change="exclude" size="mini"
+                v-model="excludeForm.tongshi37shi" placeholder="十" />
+            </el-form-item>
+            <el-form-item prop="tongshi37ge">
+              <el-input style="width: 30px;" maxlength="1" @change="exclude" size="mini"
+                v-model="excludeForm.tongshi37ge" placeholder="个" />
+            </el-form-item>
+          </div>
+          <!-- 38 -->
+          <div class="chutongshi-item-wrap">
+            <el-form-item prop="tongshi38qian">
+              <el-input style="width: 30px;" maxlength="1" @change="exclude" size="mini"
+                v-model="excludeForm.tongshi38qian" placeholder="千" />
+            </el-form-item>
+            <el-form-item prop="tongshi38bai">
+              <el-input style="width: 30px;" maxlength="1" @change="exclude" size="mini"
+                v-model="excludeForm.tongshi38bai" placeholder="百" />
+            </el-form-item>
+            <el-form-item prop="tongshi38shi">
+              <el-input style="width: 30px;" maxlength="1" @change="exclude" size="mini"
+                v-model="excludeForm.tongshi38shi" placeholder="十" />
+            </el-form-item>
+            <el-form-item prop="tongshi38ge">
+              <el-input style="width: 30px;" maxlength="1" @change="exclude" size="mini"
+                v-model="excludeForm.tongshi38ge" placeholder="个" />
+            </el-form-item>
+          </div>
+          <!-- 39 -->
+          <div class="chutongshi-item-wrap">
+            <el-form-item prop="tongshi39qian">
+              <el-input style="width: 30px;" maxlength="1" @change="exclude" size="mini"
+                v-model="excludeForm.tongshi39qian" placeholder="千" />
+            </el-form-item>
+            <el-form-item prop="tongshi39bai">
+              <el-input style="width: 30px;" maxlength="1" @change="exclude" size="mini"
+                v-model="excludeForm.tongshi39bai" placeholder="百" />
+            </el-form-item>
+            <el-form-item prop="tongshi39shi">
+              <el-input style="width: 30px;" maxlength="1" @change="exclude" size="mini"
+                v-model="excludeForm.tongshi39shi" placeholder="十" />
+            </el-form-item>
+            <el-form-item prop="tongshi39ge">
+              <el-input style="width: 30px;" maxlength="1" @change="exclude" size="mini"
+                v-model="excludeForm.tongshi39ge" placeholder="个" />
+            </el-form-item>
+          </div>
+          <!-- 40 -->
+          <div class="chutongshi-item-wrap">
+            <el-form-item prop="tongshi40qian">
+              <el-input style="width: 30px;" maxlength="1" @change="exclude" size="mini"
+                v-model="excludeForm.tongshi40qian" placeholder="千" />
+            </el-form-item>
+            <el-form-item prop="tongshi40bai">
+              <el-input style="width: 30px;" maxlength="1" @change="exclude" size="mini"
+                v-model="excludeForm.tongshi40bai" placeholder="百" />
+            </el-form-item>
+            <el-form-item prop="tongshi40shi">
+              <el-input style="width: 30px;" maxlength="1" @change="exclude" size="mini"
+                v-model="excludeForm.tongshi40shi" placeholder="十" />
+            </el-form-item>
+            <el-form-item prop="tongshi40ge">
+              <el-input style="width: 30px;" maxlength="1" @change="exclude" size="mini"
+                v-model="excludeForm.tongshi40ge" placeholder="个" />
+            </el-form-item>
+          </div>
+
+
+
         </div>
-        
       </el-form>
     </div>
 
@@ -217,7 +950,7 @@
       结果: <el-button @click="handleCopy">复制</el-button>
       <br>
 
-      <el-input id="result" ref="result" type="textarea" :value="result.join(' ')" :rows="10" />
+      <el-input id="result" ref="result" type="textarea" :value="result.join('  ')" :rows="10" />
       <!-- <div >{{result.join(' &nbsp;&nbsp;&nbsp;&nbsp; ')}}</div> -->
       <br>
     </div>
@@ -431,8 +1164,6 @@
           tongshi40bai: '',
           tongshi40shi: '',
           tongshi40ge: '',
-          chuzuhe: '',
-          chutongshi: ''
         },
         excludeFormRules: {
           shuangchong: [],
@@ -673,26 +1404,24 @@
           })
         }
 
-
-
-        // 除组合
-        if(this.excludeForm.chuzuhe) {
-          let chuzuheFormArr =  this.excludeForm.chuzuhe.split(' ')
-          for(let i = 0; i< chuzuheFormArr.length; i++) {
-            arr = arr.filter((item) => {
-              return !(((_.sortBy(item.split(''), item => item)).join('')) === ((_.sortBy(chuzuheFormArr[i], item => item)).join('')))
-            })
-          }
-        }
-
+        // 除同时0
         // 除同时
-        if(this.excludeForm.chutongshi) {
-          let chutongshiFormArr =  this.excludeForm.chutongshi.split(' ')
-          for(let i = 0; i< chutongshiFormArr.length; i++) {
-            arr = arr.filter((item) => {
-              return item !== chutongshiFormArr[i]
-            })
-          }
+        // 就是输入4个数字，比如1234.它会生成24组1234.1243.1324.1342.1423.1432.
+        // 2134.2143.2314.2341.2413.2431.
+        // 3124.3142.3241.3214.3412.3421.
+        // 4123.4132.4213.4231.4321.4312 
+        // 要是输入1233.它生成8组1233.1323.1332.2331.2313.3132.3312.3231
+        // 要是输入1222.生成1222.2122.2212.2221.只有4组
+          
+        
+        if (this.excludeForm.tongshi0qian && this.excludeForm.tongshi0bai && this.excludeForm.tongshi0shi && this.excludeForm.tongshi0ge) {
+          let excludeFormArr = [this.excludeForm.tongshi0qian,this.excludeForm.tongshi0bai,this.excludeForm.tongshi0shi,this.excludeForm.tongshi0ge]
+          let excludeFormStr = excludeFormArr.join('')
+
+          console.log(_.sortBy(excludeFormArr, item => item))
+          arr = arr.filter((item) => {
+            return !(((_.sortBy(item.split(''), item => item)).join('')) === ((_.sortBy(excludeFormArr, item => item)).join('')))
+          })
         }
 
 
